@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     #External APPS
     'django_extensions',
+    'graphene_django',
+
+    #Internal APPS
+    'pokedex.apps.PokedexConfig'
 ]
 
 MIDDLEWARE = [
@@ -102,6 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Graphene Config
+
+GRAPHENE = {
+    'SCHEMA': 'pokedex_api.schema.schema',
+    'MIDDLEWARE': [
+        'graphene_django.debug.DjangoDebugMiddleware',
+    ]
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -121,3 +134,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+from .local_settings import *
